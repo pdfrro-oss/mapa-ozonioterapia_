@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Mapa Interativo de Ozonioterapia</title>
+<link href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" rel="stylesheet"/>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<style>
+  body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+  header { background: linear-gradient(90deg,#0b6b8a,#32a89b); color: white; padding: 18px 24px; }
+  .container { padding: 20px; max-width: 1100px; margin: 0 auto; }
+  #map { height: 640px; width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+  .meta { display:flex; gap:20px; align-items:center; margin-top:12px; flex-wrap:wrap; }
+  .qr { width:140px; height:140px; border:1px solid #ddd; padding:8px; background:white; }
+  footer { font-size:13px; color:#555; padding:18px 24px; text-align:center; }
+  a.badge { display:inline-block; padding:8px 12px; background:#0b6b8a; color:white; border-radius:6px; text-decoration:none; }
+  @media(max-width:700px) { .meta{flex-direction:column;align-items:flex-start} }
+</style>
+</head>
+<body>
+<header>
+<div class="container">
+<h1>Mapa Interativo de Ozonioterapia</h1>
+<p style="margin:6px 0 0 0;">Mapa colaborativo para localizar cursos e instituições que oferecem pós-graduação em ozonioterapia, com foco em tratamento de feridas crônicas.</p>
+</div>
+</header>
+<div class="container">
+<div id="map"></div>
+<div class="meta">
+<div style="max-width:720px;">
+<p><strong>Como usar:</strong> clique nos marcadores para abrir a página do curso; o mapa é editável (arquivo HTML) e pode ser atualizado com novas instituições.</p>
+<p></p>
+</div>
+</div>
+</div>
+<footer>
+  Desenvolvido como produto do TCC – Disponibilizado gratuitamente. Última atualização: 18 nov. 2025.
+</footer>
+<script>
+  var map = L.map('map').setView([-14.235, -51.925], 4);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18 }).addTo(map);
+
+  var markers = [];
+  var m = L.marker([-30.033056, -51.229444]).addTo(map).bindPopup("<a href='https://nepuga.edu.br/pos-ozonioterapia-porto-alegre/' target='_blank' style='font-weight:700;text-decoration:none;color:#0b6b8a;'>NEPUGA - Porto Alegre (Ozonioterapia)</a><br><small><a href='https://nepuga.edu.br/pos-ozonioterapia-porto-alegre/' target='_blank'>Página do curso / instituição</a></small>"); markers.push(m);
+  var m = L.marker([-27.595377, -48.548046]).addTo(map).bindPopup("<a href='https://nepuga.edu.br/florianopolis/' target='_blank' style='font-weight:700;text-decoration:none;color:#0b6b8a;'>NEPUGA - Florianópolis (Ozonioterapia)</a><br><small><a href='https://nepuga.edu.br/florianopolis/' target='_blank'>Página do curso / instituição</a></small>"); markers.push(m);
+  var m = L.marker([-21.124444, -48.804444]).addTo(map).bindPopup("<a href='https://inaesp.com.br/produto/pos-graduacao-ead-em-ozonioterapia-integrativa/' target='_blank' style='font-weight:700;text-decoration:none;color:#0b6b8a;'>INAESP - Pindorama (Pós em Ozonioterapia)</a><br><small><a href='https://inaesp.com.br/produto/pos-graduacao-ead-em-ozonioterapia-integrativa/' target='_blank'>Página do curso / instituição</a></small>"); markers.push(m);
+  var m = L.marker([-25.091611, -50.161478]).addTo(map).bindPopup("<a href='https://www.ibrasfaculdade.edu.br/pos-graduacao/especializacao-em-ozonioterapia-e-praticas-integrativas-e-complementares' target='_blank' style='font-weight:700;text-decoration:none;color:#0b6b8a;'>IBRAS Faculdade - Ponta Grossa (Pós em Ozonioterapia)</a><br><small><a href='https://www.ibrasfaculdade.edu.br/pos-graduacao/especializacao-em-ozonioterapia-e-praticas-integrativas-e-complementares' target='_blank'>Página do curso / instituição</a></small>"); markers.push(m);
+  var m = L.marker([-15.793889, -47.882778]).addTo(map).bindPopup("<a href='https://unyleya.edu.br/pos-graduacao-ead/curso/ozonioterapia' target='_blank' style='font-weight:700;text-decoration:none;color:#0b6b8a;'>UNYLEYA (Pós EAD em Ozonioterapia) - Sede administrativa Brasília/RJ (EAD)</a><br><small><a href='https://unyleya.edu.br/pos-graduacao-ead/curso/ozonioterapia' target='_blank'>Página do curso / instituição</a></small>"); markers.push(m);
+  var m = L.marker([-22.905556, -47.060556]).addTo(map).bindPopup("<a href='https://slmandic.edu.br/cursos/especialidade/ozonioterapia/' target='_blank' style='font-weight:700;text-decoration:none;color:#0b6b8a;'>São Leopoldo Mandic - Campinas (Ozonioterapia)</a><br><small><a href='https://slmandic.edu.br/cursos/especialidade/ozonioterapia/' target='_blank'>Página do curso / instituição</a></small>"); markers.push(m);
+  var m = L.marker([-16.762778, -49.264444]).addTo(map).bindPopup("<a href='https://institutolg.com.br/' target='_blank' style='font-weight:700;text-decoration:none;color:#0b6b8a;'>Instituto LG - Aparecida de Goiânia (Pós)</a><br><small><a href='https://institutolg.com.br/' target='_blank'>Página do curso / instituição</a></small>"); markers.push(m);
+  var m = L.marker([-25.4284, -49.2733]).addTo(map).bindPopup("<a href='https://equilibra.com.br/curso/pos-graduacao-em-ozonioterapia/' target='_blank' style='font-weight:700;text-decoration:none;color:#0b6b8a;'>Equilibra - Instituto (Pós em Ozonioterapia)</a><br><small><a href='https://equilibra.com.br/curso/pos-graduacao-em-ozonioterapia/' target='_blank'>Página do curso / instituição</a></small>"); markers.push(m);
+  var m = L.marker([-23.55052, -46.633308]).addTo(map).bindPopup("<a href='https://www.aboz.org.br/cursos-eventos/pos-graduacao-hibrida-em-ozonioterapia-/131/' target='_blank' style='font-weight:700;text-decoration:none;color:#0b6b8a;'>ABOZ - Associação Brasileira de Ozonioterapia (Cursos e Pós)</a><br><small><a href='https://www.aboz.org.br/cursos-eventos/pos-graduacao-hibrida-em-ozonioterapia-/131/' target='_blank'>Página do curso / instituição</a></small>"); markers.push(m);
+  
+
+  // adjust view to show all markers
+  var group = L.featureGroup(markers);
+  map.fitBounds(group.getBounds().pad(0.2));
+</script>
+</body>
+</html>
